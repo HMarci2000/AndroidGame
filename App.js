@@ -113,8 +113,8 @@ function HomeScreen({navigation}) {
           <View style={styles.buttons}>
             <TouchableOpacity
               style={styles.buttonBackground}
-              onPress={() => navigation.navigate('Rólam')}>
-              <Text style={styles.buttonText}>Rólam</Text>
+              onPress={() => navigation.navigate('PLAY THE GAME')}>
+              <Text style={styles.buttonText}>PLAY THE GAME</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
