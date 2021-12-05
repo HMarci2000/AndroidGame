@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   border: {backgroundColor: 'rgba(0,0,0,.8)'},
 });
 
-function HomeScreen({navigation}) {
+function MenuScreen({navigation}) {
   return (
     <View style={styles.container}>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
@@ -113,26 +113,26 @@ function HomeScreen({navigation}) {
           <View style={styles.buttons}>
             <TouchableOpacity
               style={styles.buttonBackground}
-              onPress={() => navigation.navigate('PLAY THE GAME')}>
+              onPress={() => navigation.navigate('Game')}>
               <Text style={styles.buttonText}>PLAY THE GAME</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               style={styles.buttonBackground}
-              onPress={() => navigation.navigate('Oktatás')}>
-              <Text style={styles.buttonText}>Oktatás</Text>
+              onPress={() => navigation.navigate('Upgrades')}>
+              <Text style={styles.buttonText}>USE UPGRADES</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               style={styles.buttonBackground}
-              onPress={() => navigation.navigate('Kapcsolat')}>
-              <Text style={styles.buttonText}>Kapcsolat</Text>
+              onPress={() => navigation.navigate('Description')}>
+              <Text style={styles.buttonText}>DESCRIPTION</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               style={styles.buttonBackground}
-              onPress={() => navigation.navigate('Árlista')}>
-              <Text style={styles.buttonText}>Árlista</Text>
+              onPress={() => navigation.navigate('EXIT THE GAME')}>
+              <Text style={styles.buttonText}>EXIT THE GAME</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -141,7 +141,7 @@ function HomeScreen({navigation}) {
   );
 }
 
-function AboutMeScreen() {
+function GameScreen() {
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -176,7 +176,7 @@ function AboutMeScreen() {
   );
 }
 
-function StudiesScreen() {
+function UpgradesScreen() {
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -212,7 +212,7 @@ function StudiesScreen() {
   );
 }
 
-function ContactScreen() {
+function DescriptionScreen() {
   return (
     <View style={styles.container}>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
@@ -315,10 +315,10 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Nyitóoldal"
-          component={HomeScreen}
+          name="Menu"
+          component={MenuScreen}
           options={{
-            title: 'Nyitóoldal',
+            title: 'Menu',
             headerStyle: {
               backgroundColor: '#dabb68',
             },
@@ -329,9 +329,9 @@ function App() {
           }}
         />
         <Stack.Screen
-          name="Rólam"
+          name="Game"
           options={{
-            title: 'Rólam',
+            title: 'Game',
             headerStyle: {
               backgroundColor: '#dabb68',
             },
@@ -340,12 +340,12 @@ function App() {
               fontWeight: 'bold',
             },
           }}
-          component={AboutMeScreen}
+          component={GameScreen}
         />
         <Stack.Screen
-          name="Oktatás"
+          name="Upgrades"
           options={{
-            title: 'Oktatás',
+            title: 'Upgrades',
             headerStyle: {
               backgroundColor: '#dabb68',
             },
@@ -354,12 +354,12 @@ function App() {
               fontWeight: 'bold',
             },
           }}
-          component={StudiesScreen}
+          component={UpgradesScreen}
         />
         <Stack.Screen
-          name="Kapcsolat"
+          name="Description"
           options={{
-            title: 'Kapcsolat',
+            title: 'Description',
             headerStyle: {
               backgroundColor: '#dabb68',
             },
@@ -368,7 +368,7 @@ function App() {
               fontWeight: 'bold',
             },
           }}
-          component={ContactScreen}
+          component={DescriptionScreen}
         />
         <Stack.Screen
           name="Árlista"
