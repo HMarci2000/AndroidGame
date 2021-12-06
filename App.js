@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ImageBackground,
   View,
+  Image,
   Text,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
@@ -57,13 +58,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,.8)',
     fontSize: 20,
   },
-  contactText: {
+  descriptionText: {
     flex: 1,
-    marginTop: 270,
+    marginTop: 160,
     marginBottom: 160,
     alignItems: 'center',
     justifyContent: 'center',
-    color: '#dabb68',
+    color: 'goldenrod',
     padding: 20,
     fontSize: 20,
     backgroundColor: 'rgba(0,0,0,.8)',
@@ -74,28 +75,32 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    color: '#000000',
+    color: 'goldenrod',
     fontWeight: 'bold',
     alignSelf: 'center',
     textTransform: 'uppercase',
   },
   buttonBackground: {
     elevation: 8,
-    backgroundColor: '#dabb68',
+    backgroundColor: 'rgba(0,0,0,.8)',
     marginBottom: 30,
-    marginLeft: 30,
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 10,
   },
+  teemoImage: {
+    marginLeft: 50,
+    marginBottom: 0,
+    alignItems: 'center',
+  },
   buttons: {
     flex: 1,
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'center',
     flexDirection: 'column',
     marginTop: 140,
     opacity: 50,
-    selectionColor: '#000000',
+    selectionColor: 'blue',
   },
   head: {height: 40},
   tableText: {textAlign: 'center', color: '#dabb68'},
@@ -144,31 +149,29 @@ function MenuScreen({navigation}) {
 function GameScreen() {
   return (
     <ScrollView>
-      <View style={styles.container}>
+      <View>
         <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-          <Text style={styles.text}>
-            &emsp;Olyan számomra a zene, mint másnak a levegővétel. Természetes.
-            Ha egy dallamot hallok, az ujjaim ösztönösen mozdulnak, elkezdenek
-            egy képzeletbeli zongorán játszani. Nem csak a kifejezőeszközöm,
-            hanem az életem része. Megnyugtat és felemel, ha stresszelek,
-            élményt, és játékot ad a mindennapjaimnak. Ráadásul ebben nem csak
-            én részesülök, hanem a közönségem, a zenésztársaim, a családom és a
-            barátaim is. Életem minden pillanatát átszövi; a hobbim, a munkám, a
-            hivatásom. Az iránta érzett vonzalom már egészen kisgyermek koromban
-            megmutatkozott, iskolai éveimet a kolozsvári zenelíceumban –
-            Sigismund Toduta - kezdtem, majd a szombathelyi Bartók Béla
-            Zeneiskolában folytattam. Innen kerültem a Művészeti Szakközépiskola
-            zenei évfolyamára. 10 évig klasszikus zongorát tanultam, de úgy
-            éreztem, hogy az éneklésben tudnék kiteljesedni, ezért „hangszert
-            váltottam”. A Pécsi Tudományegyetemen folytattam tanulmányaimat,
-            ahol magánének mestertanár diplomát szereztem. Mestereim között
-            tudhatom Magyar Szilviát, Tokody Ilonát és Huszti Bernadettet. Hálás
-            vagyok Horváth Zoltánnak, Polgárné Papp Klárának, Somogyi
-            Teréziának, Paulik Ákosnak, Kamp Salamonnak, Neumark Zoltánnak, dr.
-            Váradi Mariannak, Vass Andrásnak, Dobos Lászlónak; illetve
-            mindazoknak akik építettek engem az évek során. Jelenleg
-            Szombathelyen tevékenykedem, magántanárként oktatok, koncertezek, a
-            Hangár Egyesülettel és az Isis Big Banddel dolgozom együtt.
+          <Text
+            style={{
+              textAlign: 'center',
+              fontSize: 42,
+              color: 'goldenrod',
+              backgroundColor: 'rgba(0,0,0,.8)',
+            }}>
+            Teemo
+          </Text>
+          <Image
+            style={styles.teemoImage}
+            source={require('./images/teemo.png')}
+          />
+          <Text
+            style={{
+              textAlign: 'center',
+              fontSize: 42,
+              color: 'goldenrod',
+              backgroundColor: 'rgba(0,0,0,.8)',
+            }}>
+            Teemo
           </Text>
         </ImageBackground>
       </View>
@@ -217,11 +220,14 @@ function DescriptionScreen() {
     <View style={styles.container}>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
         <ScrollView>
-          <Text style={styles.contactText}>
-            &emsp;Ha úgy érzed, hogy szeretnél meghívni egy fellépésre, vagy
-            nálam tanulnál; keress az alábbi elérhetőségek egyikén! {'\n'}
-            {'\n'}Telefonszám: +3620 382 2677 {'\n'}Email cím:
-            antalimola92@gmail.com
+          <Text style={styles.descriptionText}>
+            &emsp;In this game, you must defeat your enemies! {'\n'}{' '}
+            &emsp;Opponents drop you gold or gear to have better chanches to
+            kill tougher enemies.
+            {'\n'}&emsp; In the beginning of the game you have to choose your
+            champion, then you will receive an opponent. During the fights you
+            can use basic attacks and special skills, which are either damaging
+            or crowd control abilities.
           </Text>
         </ScrollView>
       </ImageBackground>
@@ -318,14 +324,7 @@ function App() {
           name="Menu"
           component={MenuScreen}
           options={{
-            title: 'Menu',
-            headerStyle: {
-              backgroundColor: '#dabb68',
-            },
-            headerTintColor: '#000000',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
+            headerShown: false,
           }}
         />
         <Stack.Screen
@@ -333,9 +332,9 @@ function App() {
           options={{
             title: 'Game',
             headerStyle: {
-              backgroundColor: '#dabb68',
+              backgroundColor: 'rgba(0,0,0,.8)',
             },
-            headerTintColor: '#000000',
+            headerTintColor: 'goldenrod',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
@@ -361,9 +360,9 @@ function App() {
           options={{
             title: 'Description',
             headerStyle: {
-              backgroundColor: '#dabb68',
+              backgroundColor: 'rgba(0,0,0,.8)',
             },
-            headerTintColor: '#000000',
+            headerTintColor: 'goldenrod',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
