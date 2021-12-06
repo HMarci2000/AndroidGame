@@ -8,8 +8,8 @@ import {
   Image,
   Text,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
   Table,
   TableWrapper,
@@ -79,8 +79,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     alignSelf: 'center',
     textTransform: 'uppercase',
+    textAlign: 'center',
   },
   buttonBackground: {
+    elevation: 8,
+    backgroundColor: 'rgba(0,0,0,.8)',
+    marginBottom: 30,
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    width: 300,
+  },
+  skilledButtonBackground: {
     elevation: 8,
     backgroundColor: 'rgba(0,0,0,.8)',
     marginBottom: 30,
@@ -102,15 +112,26 @@ const styles = StyleSheet.create({
     opacity: 50,
     selectionColor: 'blue',
   },
-  head: {height: 40},
-  tableText: {textAlign: 'center', color: '#dabb68'},
-  wrapper: {flexDirection: 'row'},
-  tableTitle: {flex: 1},
-  row: {height: 28},
-  border: {backgroundColor: 'rgba(0,0,0,.8)'},
+  skillButtons: {
+    flex: 1,
+    alignItems: 'center',
+    //justifyContent: 'center',
+    flexDirection: 'row',
+    paddingLeft: 10,
+    //marginTop: 140,
+    opacity: 50,
+    selectionColor: 'blue',
+    width: 1050,
+  },
+  head: { height: 40 },
+  tableText: { textAlign: 'center', color: '#dabb68' },
+  wrapper: { flexDirection: 'row' },
+  tableTitle: { flex: 1 },
+  row: { height: 28 },
+  border: { backgroundColor: 'rgba(0,0,0,.8)' },
 });
 
-function MenuScreen({navigation}) {
+function MenuScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
@@ -160,19 +181,44 @@ function GameScreen() {
             }}>
             Teemo
           </Text>
+          <Text
+            style={{
+              textAlign: 'center',
+              fontSize: 32,
+              color: 'goldenrod',
+              backgroundColor: 'rgba(0,0,0,.8)',
+            }}>
+            Lv. 18 2200/4000
+          </Text>
           <Image
             style={styles.teemoImage}
             source={require('./images/teemo.png')}
           />
-          <Text
-            style={{
-              textAlign: 'center',
-              fontSize: 42,
-              color: 'goldenrod',
-              backgroundColor: 'rgba(0,0,0,.8)',
-            }}>
-            Teemo
-          </Text>
+          <View style={styles.skillButtons}>
+            <TouchableOpacity
+              style={styles.skilledButtonBackground}
+              onPress={() => navigation.navigate('Game')}>
+              <Text style={styles.buttonText}>Q</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.skilledButtonBackground}
+              onPress={() => navigation.navigate('Upgrades')}>
+              <Text style={styles.buttonText}>W</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.skilledButtonBackground}
+              onPress={() => navigation.navigate('Description')}>
+              <Text style={styles.buttonText}>E</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.skilledButtonBackground}
+              onPress={() => navigation.navigate('EXIT THE GAME')}>
+              <Text style={styles.buttonText}>R</Text>
+            </TouchableOpacity>
+          </View>
         </ImageBackground>
       </View>
     </ScrollView>
@@ -279,7 +325,7 @@ function PriceScreen() {
             Bérlet árlista:
           </Text>
           <Table
-            borderStyle={{borderWidth: 3, borderColor: '#dabb68'}}
+            borderStyle={{ borderWidth: 3, borderColor: '#dabb68' }}
             style={styles.border}>
             <Row
               data={CONTENT.tableHead}
